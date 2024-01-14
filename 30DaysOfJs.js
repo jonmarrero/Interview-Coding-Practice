@@ -1,3 +1,5 @@
+// Closures 
+
 // Question 1
 // Write a function createHelloWorld. It should return a new function that always returns "Hello World".
 
@@ -83,3 +85,42 @@ var createCounter = function(init) {
  * counter.reset(); // 5
  * counter.decrement(); // 4
  */
+
+
+// Basic Array Transformations
+
+// Question 4 
+
+// Given an integer array arr and a mapping function fn, return a new array with a transformation applied to each element.
+// The returned array should be created such that returnedArray[i] = fn(arr[i], i).
+// Please solve it without the built-in Array.map method.
+
+// Solved Using Array.Map method 
+/**
+ * @param {number[]} arr
+ * @param {Function} fn
+ * @return {number[]}
+ */
+var map = function(arr, fn) {
+    return arr.map(fn);
+};
+
+// Solved using a for loop 
+/**
+ * @param {number[]} arr
+ * @param {Function} fn
+ * @return {number[]}
+ */
+var map = function(arr, fn) {
+    const res = [];
+// passing a function into another function is an example of strategy design pattern 
+
+
+    // of will iterate every value in the array 
+    for (const i in arr) {
+        // push is how you append to the end of an array
+        res.push(fn(arr[i], Number(i)));
+    }
+    // return the result 
+    return res;
+};
