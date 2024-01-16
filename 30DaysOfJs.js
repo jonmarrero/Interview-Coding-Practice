@@ -166,3 +166,67 @@ var filter = function(arr, fn) {
     }
     return res;
 };
+
+// Question 6 
+
+// Given an integer array nums, a reducer function fn, and an initial value init, return the final result obtained by executing the fn function on each element of the array, sequentially, passing in the return value from the calculation on the preceding element.
+
+// This result is achieved through the following operations: val = fn(init, nums[0]), val = fn(val, nums[1]), val = fn(val, nums[2]), ... until every element in the array has been processed. The ultimate value of val is then returned.
+
+// If the length of the array is 0, the function should return init.
+
+// Please solve it without using the built-in Array.reduce method.
+
+// Solved using the array.reduce method 
+/**
+ * @param {number[]} nums
+ * @param {Function} fn
+ * @param {number} init
+ * @return {number}
+ */
+var reduce = function(nums, fn, init) {
+    return nums.reduce(fn, init);
+};
+
+
+// solved using a for loop 
+/**
+ * @param {number[]} nums
+ * @param {Function} fn
+ * @param {number} init
+ * @return {number}
+ */
+var reduce = function(nums, fn, init) {
+    // our result is going to be whatever the initial value is thats passed in 
+    let res = init;
+
+    // now we want to go through every number in the array 
+    for (const n of nums) {
+        // for each value we want to call that function and then update our result
+        // I want to pass in the res into the function because i want to add the previous result for each iteration through the array 
+        res = fn(res, n)
+    }
+    // return the result 
+    return res;
+};
+
+
+// solved using a for.each function 
+/**
+ * @param {number[]} nums
+ * @param {Function} fn
+ * @param {number} init
+ * @return {number}
+ */
+var reduce = function(nums, fn, init) {
+    let res = init;
+
+    // for.each function iterates through each number in the array so I create the function and then pass n as the parameter to hit each number in the array 
+    nums.forEach((n) => {
+        // update our result so we can set it to the function being called 
+        res = fn(res, n)
+    });
+    // return the result 
+    return res;
+
+};
