@@ -265,3 +265,40 @@ var compose = function(functions) {
  * const fn = compose([x => x + 1, x => 2 * x])
  * fn(4) // 9
  */
+
+// Question 8 
+
+// Given a function fn, return a new function that is identical to the original function except that it ensures fn is called at most once.
+
+// The first time the returned function is called, it should return the same result as fn.
+// Every subsequent time it is called, it should return undefined.
+
+/**
+ * @param {Function} fn
+ * @return {Function}
+ */
+
+// the once function is taking in a single parameter that is another function  and then returning another function as the result once is called making it a higher order function 
+var once = function(fn) {
+    // using closure, i created a boolean to let me know when the function is called 
+    let called = false;
+
+    return function(...args){
+        // if the called is true then we return undefined and we dont want to call it again 
+        if (called) {
+            return undefined;
+        }
+        // otherwise, we do want to call it again using the spread operator 
+        called = true;
+        // return the calculated value 
+        return fn(...args);
+    }
+};
+
+/**
+ * let fn = (a,b,c) => (a + b + c)
+ * let onceFn = once(fn)
+ *
+ * onceFn(1,2,3); // 6
+ * onceFn(2,3,6); // returns undefined without calling fn
+ */
