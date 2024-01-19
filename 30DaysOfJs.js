@@ -302,3 +302,53 @@ var once = function(fn) {
  * onceFn(1,2,3); // 6
  * onceFn(2,3,6); // returns undefined without calling fn
  */
+
+
+// Question 9 
+
+// Given a function fn, return a memoized version of that function.
+
+// A memoized function is a function that will never be called twice with the same inputs. Instead it will return a cached value.
+
+// You can assume there are 3 possible input functions: sum, fib, and factorial.
+
+// sum accepts two integers a and b and returns a + b.
+// fib accepts a single integer n and returns 1 if n <= 1 or fib(n - 1) + fib(n - 2) otherwise.
+// factorial accepts a single integer n and returns 1 if n <= 1 or factorial(n - 1) * n otherwise.
+
+/**
+ * @param {Function} fn
+ */
+
+// we have this wrapper function that is going to add content or add functionality to whatever function we pass in 
+function memoize(fn) {
+    // create a state to call the function, i made it a const because its going to be an object 
+    const cache = {};
+
+    // the ...args is an arbitruary number of paramater 
+    return function(...args) {
+        // JSON takes an object and converts it into a string to then we can use as a key in our hash map
+        const key = JSON.stringify(args);
+        // now we check if the key already inserted in our cache 
+        if (key in cache) {
+            // if it is then we simply return the key in the cache 
+            return cache[key];
+        } 
+        // if its not then we compute it so the cache equals the function and then return the key in they cache 
+        cache[key] = fn(...args);
+        return cache[key];
+        
+    }
+}
+
+
+/** 
+ * let callCount = 0;
+ * const memoizedFn = memoize(function (a, b) {
+ *	 callCount += 1;
+ *   return a + b;
+ * })
+ * memoizedFn(2, 3) // 5
+ * memoizedFn(2, 3) // 5
+ * console.log(callCount) // 1 
+ */
