@@ -528,3 +528,29 @@ var debounce = function(fn, t) {
  * log('Hello'); // cancelled
  * log('Hello'); // Logged at t=100ms
  */
+
+// Question 13 
+
+// Given a positive integer millis, write an asynchronous function that sleeps for millis milliseconds. It can resolve any value.
+
+/**
+ * @param {number} millis
+ * @return {Promise}
+ */
+async function sleep(millis) {
+    // create a callback we are passing into the promise 
+    function callback(resolve, reject) {
+        // setTimeout to solve resolve 
+        setTimeout(resolve, millis);
+    }
+    
+    // return the proomise 
+    return new Promise(callback);
+}
+
+// asychronous function will return a promise and promises will resolve to a value at some point 
+
+/** 
+ * let t = Date.now()
+ * sleep(100).then(() => console.log(Date.now() - t)) // 100
+ */
