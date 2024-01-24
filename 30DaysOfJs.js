@@ -554,3 +554,44 @@ async function sleep(millis) {
  * let t = Date.now()
  * sleep(100).then(() => console.log(Date.now() - t)) // 100
  */
+
+
+// JSON Problems 
+// Question 14 
+
+// Given an array arr and a chunk size size, return a chunked array. A chunked array contains the original elements in arr, but consists of subarrays each of length size. The length of the last subarray may be less than size if arr.length is not evenly divisible by size.
+
+// You may assume the array is the output of JSON.parse. In other words, it is valid JSON.
+
+// Please solve it without using lodash's _.chunk function.
+
+/**
+ * @param {Array} arr
+ * @param {number} size
+ * @return {Array}
+ */
+var chunk = function(arr, size) {
+    // declare output result 
+    const res = [];
+    // declare a sub array with let so we can re-assign it 
+    let subarr = [];
+    // go through each element in the array with an iterator a pointer i and then increment the pointer by 1 
+    for (let i = 0; i < arr.length; i++) {
+        // push each element to the sub array 
+        subarr.push(arr[i]);
+        // if the sub array reaches the length of the array then we want to flush it for a result 
+        if (subarr.length === size) {
+            // append it to the result 
+            res.push(subarr);
+            // then re-assign the sub array to clear it 
+            subarr = [];
+        }
+    }
+    // if the sub array is non empty we need to check it 
+    if (subarr.length) {
+      // if it is then we want to push the result to the sub array 
+        res.push(subarr);   
+    } 
+    // then return the result 
+    return res;
+};
