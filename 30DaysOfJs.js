@@ -630,3 +630,37 @@ Array.prototype.groupBy = function(fn) {
 /**
  * [1,2,3].groupBy(String) // {"1":[1],"2":[2],"3":[3]}
  */
+
+
+// Question 16
+
+// Given a multi-dimensional array arr and a depth n, return a flattened version of that array.
+
+// A multi-dimensional array is a recursive data structure that contains integers or other multi-dimensional arrays.
+
+// A flattened array is a version of that array with some or all of the sub-arrays removed and replaced with the actual elements in that sub-array. This flattening operation should only be done if the current depth of nesting is less than n. The depth of the elements in the first array are considered to be 0.
+
+// Please solve it without the built-in Array.flat method.
+
+/**
+ * @param {Array} arr
+ * @param {number} depth
+ * @return {Array}
+ */
+var flat = function (arr, n) {
+    const res = [];
+
+    function helper(arr, depth) {
+        // iterate through all values with a for of loop
+        for (const val of arr) {
+            if (typeof val === 'object' && depth < n) {
+                helper(val, depth + 1)
+            } else {
+                res.push(val);
+            }  
+        }
+        return res;
+    }
+    // return value of helper function 
+    return helper(arr, 0);
+};
