@@ -719,3 +719,25 @@ var expect = function(val) {
  * expect(5).toBe(5); // true
  * expect(5).notToBe(5); // throws "Equal"
  */
+
+
+// Question 19 
+
+// Write a function argumentsLength that returns the count of arguments passed to it.
+
+
+/**
+ * @param {...(null|boolean|number|string|Array|Object)} args
+ * @return {number}
+ */
+var argumentsLength = function(...args) {
+    let count = 0;
+    for (let i = 0; i < args.length; i++) {
+        count++
+    }
+    return count;
+};
+
+/**
+ * argumentsLength(1, 2, 3); // 3
+ */
