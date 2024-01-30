@@ -741,3 +741,31 @@ var argumentsLength = function(...args) {
 /**
  * argumentsLength(1, 2, 3); // 3
  */
+
+
+//  Question 20
+
+// Given two promises promise1 and promise2, return a new promise. promise1 and promise2 will both resolve with a number. The returned promise should resolve with the sum of the two numbers.
+
+/**
+ * @param {Promise} promise1
+ * @param {Promise} promise2
+ * @return {Promise}
+ */
+var addTwoPromises = async function(promise1, promise2) {
+    return new Promise (async (res, rej) => {
+        // promise1.then((val1) => {
+            // promise2.then((val2) => res(val1 + val2))
+        // })
+
+        const sum = await Promise.all([promise1, promise2]); //[2, 5]
+        // res(sum[0] + sum[1]);
+        let ans = sum.reduce((acc, currVal) => acc + currVal);
+        res(ans);
+    })
+};
+
+/**
+ * addTwoPromises(Promise.resolve(2), Promise.resolve(2))
+ *   .then(console.log); // 4
+ */
