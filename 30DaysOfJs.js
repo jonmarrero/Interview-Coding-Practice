@@ -1176,7 +1176,7 @@ var compactObject = function(obj) {
 
 // given a string containing just the characters and determine if the input string is valid. 
 
-// an input string is valid if:
+// an input string is valid if and when 
 // open brackets must be closed by the same type of brackets 
 // open brackets must be closed in the correct order 
 
@@ -1203,3 +1203,4 @@ var isVallid = function(s) {
     }
     return stack.length === 0;
 };
+
