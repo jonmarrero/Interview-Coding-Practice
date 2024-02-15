@@ -47,3 +47,68 @@ class Solution {
             sort(nums1.begin(),nums1.end());
         }
     };
+
+
+// Question 2 
+
+// Given an integer array nums and an integer val, remove all occurrences of val in nums in-place. The order of the elements may be changed. Then return the number of elements in nums which are not equal to val.
+
+// Consider the number of elements in nums which are not equal to val be k, to get accepted, you need to do the following things:
+
+// Change the array nums such that the first k elements of nums contain the elements which are not equal to val. The remaining elements of nums are not important as well as the size of nums.
+// Return k.
+
+// Using Java 
+class Solution {
+    public int removeElement(int[] nums, int val) {
+        int i=0;
+        for(int j=0; j<nums.length; j++){
+            if(nums[j]!=val) {
+                nums[i++]=nums[j];
+            }
+        }
+        return i;
+    }
+}
+
+// using C++ 
+class Solution {
+    public:
+        int removeElement(vector<int>& nums, int val) {
+            int i = 0;
+            for(int j = 0; j < nums.size(); j++) {
+                if(nums[j] != val) {
+                    nums[i] = nums[j];
+                    i++;
+                }
+            }
+            return i;
+
+// Using Python3
+from typing import List
+
+class Solution:
+    def removeElement(self, nums: List[int], val: int) -> int:
+        i = 0
+        for j in range(len(nums)):
+            if nums[j] != val:
+                nums[i] = nums[j]
+                i += 1
+        return i
+
+// Using JavaScript
+/**
+ * @param {number[]} nums
+ * @param {number} val
+ * @return {number}
+ */
+var removeElement = function(nums, val) {
+    let i = 0;
+    for (let j = 0; j < nums.length; j++) {
+        if (nums[j] !== val) {
+            nums[i] = nums[j];
+            i++;
+        }
+    }
+    return i;
+};
