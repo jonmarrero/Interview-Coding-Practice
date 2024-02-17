@@ -112,3 +112,6 @@ var removeElement = function(nums, val) {
     }
     return i;
 };
+
+// Question 3 
+
